@@ -8,17 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		65ACBDA7299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDA6299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift */; };
-		65ACBDA9299E7CD7002D324C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDA8299E7CD7002D324C /* ContentView.swift */; };
+		65ACBDA9299E7CD7002D324C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDA8299E7CD7002D324C /* GalleryView.swift */; };
 		65ACBDAB299E7CD8002D324C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65ACBDAA299E7CD8002D324C /* Assets.xcassets */; };
 		65ACBDAE299E7CD8002D324C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65ACBDAD299E7CD8002D324C /* Preview Assets.xcassets */; };
+		65ACBDB5299E7E6E002D324C /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDB4299E7E6E002D324C /* ScannerView.swift */; };
+		65ACBDB8299E83EC002D324C /* ScannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDB7299E83EB002D324C /* ScannerModel.swift */; };
+		65ACBDBA299E8468002D324C /* FilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDB9299E8468002D324C /* FilesService.swift */; };
+		65ACBDBC299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBB299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift */; };
+		65ACBDBE299E87A7002D324C /* PDFKitRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBD299E87A7002D324C /* PDFKitRepresentedView.swift */; };
+		65ACBDC0299E8805002D324C /* ShareActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */; };
+		65ACBDC9299E89A7002D324C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDC8299E89A7002D324C /* Constants.swift */; };
+		65ACBDCB299E8D0D002D324C /* PDFOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDCA299E8D0D002D324C /* PDFOpenView.swift */; };
+		65ACBDCE299E900F002D324C /* GalleryView+PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDCD299E900F002D324C /* GalleryView+PDFView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		65ACBDA3299E7CD7002D324C /* PDF Scanner Prototype 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDF Scanner Prototype 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65ACBDA6299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF_Scanner_Prototype_2App.swift; sourceTree = "<group>"; };
-		65ACBDA8299E7CD7002D324C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		65ACBDA8299E7CD7002D324C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		65ACBDAA299E7CD8002D324C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65ACBDAD299E7CD8002D324C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		65ACBDB4299E7E6E002D324C /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		65ACBDB7299E83EB002D324C /* ScannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModel.swift; sourceTree = "<group>"; };
+		65ACBDB9299E8468002D324C /* FilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesService.swift; sourceTree = "<group>"; };
+		65ACBDBB299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScannerModel+VNDocumentCameraViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		65ACBDBD299E87A7002D324C /* PDFKitRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitRepresentedView.swift; sourceTree = "<group>"; };
+		65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityViewController.swift; sourceTree = "<group>"; };
+		65ACBDC8299E89A7002D324C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		65ACBDCA299E8D0D002D324C /* PDFOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFOpenView.swift; sourceTree = "<group>"; };
+		65ACBDCD299E900F002D324C /* GalleryView+PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryView+PDFView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +69,12 @@
 		65ACBDA5299E7CD7002D324C /* PDF Scanner Prototype 2 */ = {
 			isa = PBXGroup;
 			children = (
-				65ACBDA6299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift */,
-				65ACBDA8299E7CD7002D324C /* ContentView.swift */,
-				65ACBDAA299E7CD8002D324C /* Assets.xcassets */,
 				65ACBDAC299E7CD8002D324C /* Preview Content */,
+				65ACBDC3299E8877002D324C /* Extensions */,
+				65ACBDB6299E833D002D324C /* Resources */,
+				65ACBDC4299E8895002D324C /* Services */,
+				65ACBDC1299E885C002D324C /* Startup */,
+				65ACBDC6299E891B002D324C /* UserStories */,
 			);
 			path = "PDF Scanner Prototype 2";
 			sourceTree = "<group>";
@@ -65,6 +85,85 @@
 				65ACBDAD299E7CD8002D324C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		65ACBDB6299E833D002D324C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDC8299E89A7002D324C /* Constants.swift */,
+				65ACBDAA299E7CD8002D324C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		65ACBDC1299E885C002D324C /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDA6299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		65ACBDC2299E8866002D324C /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDA8299E7CD7002D324C /* GalleryView.swift */,
+				65ACBDC7299E8963002D324C /* ViewDatas */,
+				65ACBDCC299E8D39002D324C /* Views */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		65ACBDC3299E8877002D324C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDBB299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift */,
+				65ACBDCD299E900F002D324C /* GalleryView+PDFView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		65ACBDC4299E8895002D324C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDB9299E8468002D324C /* FilesService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		65ACBDC5299E88D5002D324C /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDB7299E83EB002D324C /* ScannerModel.swift */,
+				65ACBDB4299E7E6E002D324C /* ScannerView.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		65ACBDC6299E891B002D324C /* UserStories */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDC2299E8866002D324C /* Gallery */,
+				65ACBDC5299E88D5002D324C /* Scanner */,
+			);
+			path = UserStories;
+			sourceTree = "<group>";
+		};
+		65ACBDC7299E8963002D324C /* ViewDatas */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */,
+				65ACBDBD299E87A7002D324C /* PDFKitRepresentedView.swift */,
+			);
+			path = ViewDatas;
+			sourceTree = "<group>";
+		};
+		65ACBDCC299E8D39002D324C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDCA299E8D0D002D324C /* PDFOpenView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +236,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65ACBDA9299E7CD7002D324C /* ContentView.swift in Sources */,
+				65ACBDBC299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift in Sources */,
+				65ACBDC0299E8805002D324C /* ShareActivityViewController.swift in Sources */,
+				65ACBDB8299E83EC002D324C /* ScannerModel.swift in Sources */,
+				65ACBDCB299E8D0D002D324C /* PDFOpenView.swift in Sources */,
+				65ACBDB5299E7E6E002D324C /* ScannerView.swift in Sources */,
+				65ACBDCE299E900F002D324C /* GalleryView+PDFView.swift in Sources */,
+				65ACBDA9299E7CD7002D324C /* GalleryView.swift in Sources */,
+				65ACBDBA299E8468002D324C /* FilesService.swift in Sources */,
 				65ACBDA7299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift in Sources */,
+				65ACBDBE299E87A7002D324C /* PDFKitRepresentedView.swift in Sources */,
+				65ACBDC9299E89A7002D324C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +378,13 @@
 				DEVELOPMENT_TEAM = 9D3QPUYX6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "📸 Allow PDF Scanner use your Camera to able scan documents";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +409,13 @@
 				DEVELOPMENT_TEAM = 9D3QPUYX6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "📸 Allow PDF Scanner use your Camera to able scan documents";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

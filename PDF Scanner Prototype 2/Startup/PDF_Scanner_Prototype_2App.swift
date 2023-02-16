@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct PDF_Scanner_Prototype_2App: App {
+    
+    // MARK: Properties
+    
+    private let filesService: FileService = FileServiceImplementation()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GalleryView(filesService: filesService, scannerModel: ScannerModel())
         }
     }
+
 }
