@@ -32,7 +32,7 @@ struct GalleryView: View {
     var body: some View {
         ZStack {
             if PDFview {
-                PDFOpenView(url: url!, fileName: fileName, PDFview: $PDFview)
+                PDFOpenView(url: url!, fileName: fileName, isPDFOpenView: $PDFview)
             }
             else {
                 NavigationView {

@@ -7,34 +7,45 @@
 
 import SwiftUI
 import PDFKit
+import PencilKit
 
 struct PDFOpenView: View {
     
     // MARK: Properties
     
-    var url : URL
-    var fileName : String
+    var url:  URL
+    var fileName: String
     
     @Binding
-    var PDFview : Bool
+    var isPDFOpenView: Bool
     
     @State
-    private var share = false
+    private var isSharePresent = false
     @State
-    private var printPDF = false
+    private var isPrintPDF = false
     @State
-    private var pdfShare = PDFView()
+    private var isEditPDF = false
+
     @State
     private var fileToShare = [Any]()
+    @State
+    private var pdfView = PDFView()
+    @State
+    var pencilKitImage: PKCanvasView?
     
     // MARK: Layout
     
-    var body: some View{
+    var body: some View {
         VStack {
             HStack(alignment: .bottom) {
                 Button(Constants.Titles.Buttons.back) {
                     withAnimation {
-                        PDFview = false
+                        if isEditPDF {
+                            isEditPDF.toggle()
+                        }
+                        else {
+                            isPDFOpenView = false
+                        }
                     }
                 }
                 
@@ -45,29 +56,34 @@ struct PDFOpenView: View {
                 Button {
                     withAnimation {
                         fileToShare.removeAll()
-                        pdfShare.document = PDFDocument(url: url)
+                        pdfView.document = PDFDocument(url: url)
                         fileToShare.append(NSURL(fileURLWithPath: url.absoluteString))
                         print(fileToShare.description)
-                        share.toggle()
+                        isSharePresent.toggle()
                     }
                 } label: {
                     Image(systemName: "square.and.arrow.up").font(.title3)
                 }
                 
-                .sheet(isPresented: $share) {
+                .sheet(isPresented: $isSharePresent) {
                     let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
                     ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
                 }
             }
             .padding()
             
-            PDFKitRepresentedView(url)
-            Spacer()
-
-            Button {
-                printPDF = true
-            } label: {
-                Text(Constants.Titles.Buttons.print)
+            if isEditPDF {
+                // TODO: Open PDFEditorView(url) with back button
+            }
+            else {
+                PDFKitRepresentedView(url)
+                Spacer()
+                
+                Button {
+                    isEditPDF = true
+                } label: {
+                    Text("Edit this PDF")
+                }
             }
         }
     }

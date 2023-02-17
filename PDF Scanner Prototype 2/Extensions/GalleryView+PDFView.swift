@@ -14,7 +14,7 @@ extension GalleryView {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: UIScreen.main.bounds.width / 4))], spacing: 20) {
             ForEach( files.indices, id: \.self) { file in
                 VStack {
-                    Image("docs").resizable().aspectRatio(contentMode: .fit)
+                    Image(Constants.Images.Icons.doc).resizable().aspectRatio(contentMode: .fit)
                     Spacer()
 
                     Text("\(files[file])").font(.caption).onTapGesture {
@@ -47,6 +47,7 @@ extension GalleryView {
                     }
                 ).padding(.horizontal)
             }
+
             VStack {
                 Spacer()
 

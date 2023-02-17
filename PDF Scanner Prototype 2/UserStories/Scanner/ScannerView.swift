@@ -20,7 +20,7 @@ struct ScanView: View {
     var scannerModel: ScannerModel
 
     @Binding
-    var files : [String]
+    var files: [String]
     @Environment(\.presentationMode)
     var mode
     
@@ -43,10 +43,10 @@ struct ScanView: View {
                             .aspectRatio(contentMode: .fit).contextMenu {
                                 Button {
                                     let items = [image]
-                                    let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
                                     let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first
 
-                                    window?.rootViewController?.present(ac, animated: true)
+                                    window?.rootViewController?.present(activityViewController, animated: true)
                                 } label: {
                                     Label(Constants.Titles.Buttons.share, systemImage: "square.and.arrow.up")
                                 }
@@ -62,11 +62,11 @@ struct ScanView: View {
                     }
                     
                     Button {
-                        withAnimation{
+                        withAnimation {
                             addDoc = true
                         }
                     } label: {
-                        VStack{
+                        VStack {
                             Image(systemName: "plus").font(.largeTitle)
                             Text(Constants.Titles.Buttons.scan)
                         }

@@ -40,4 +40,12 @@ enum Constants {
 
     }
     
+    enum Images {
+        
+        enum Icons {
+            static let doc: String = "doc-icon"
+        }
+        
+    }
+    
 }
