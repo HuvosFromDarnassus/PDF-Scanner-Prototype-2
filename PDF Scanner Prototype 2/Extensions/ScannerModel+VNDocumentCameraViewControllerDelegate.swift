@@ -11,7 +11,7 @@ import VisionKit
 extension ScannerModel: VNDocumentCameraViewControllerDelegate {
 
     func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true)
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
@@ -19,11 +19,13 @@ extension ScannerModel: VNDocumentCameraViewControllerDelegate {
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        print("Did Finish With Scan.")
-        for i in 0..<scan.pageCount {
-            self.imageArray.append(scan.imageOfPage(at:i))
+        let scannedPagesCount = scan.pageCount
+        
+        for index in 0..<scannedPagesCount {
+            self.imageArray.append(scan.imageOfPage(at:index))
         }
-        controller.dismiss(animated: true, completion: nil)
+
+        controller.dismiss(animated: true)
     }
 
 }

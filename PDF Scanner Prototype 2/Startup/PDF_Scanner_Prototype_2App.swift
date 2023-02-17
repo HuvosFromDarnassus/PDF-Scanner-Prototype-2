@@ -14,6 +14,8 @@ struct PDF_Scanner_Prototype_2App: App {
     
     private let filesService: FileService = FileServiceImplementation()
 
+    // MARK: Layout
+    
     var body: some Scene {
         WindowGroup {
             GalleryView(filesService: filesService, scannerModel: ScannerModel())

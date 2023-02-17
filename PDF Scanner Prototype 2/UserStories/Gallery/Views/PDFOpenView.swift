@@ -8,7 +8,9 @@
 import SwiftUI
 import PDFKit
 
-struct PDFOpenView : View{
+struct PDFOpenView: View{
+    
+    // MARK: Properties
     
     var url : URL
     var fileName : String
@@ -17,49 +19,57 @@ struct PDFOpenView : View{
     var PDFview : Bool
     
     @State
-    var share = false
+    private var share = false
     @State
-    var printPDF = false
+    private var printPDF = false
     @State
-    var pdfShare = PDFView()
+    private var pdfShare = PDFView()
     @State
-    var fileToShare = [Any]()
+    private var fileToShare = [Any]()
+    
+    // MARK: Layout
     
     var body: some View{
-        VStack{
-            HStack(alignment: .bottom){
-                Button(action: {
-                    withAnimation{
+        VStack {
+            HStack(alignment: .bottom) {
+                Button(Constants.Titles.Buttons.back) {
+                    withAnimation {
                         PDFview = false
                     }
-                }){
-                    Text(Constants.Titles.Buttons.back).fontWeight(.semibold)
                 }
+                
                 Spacer()
                 Text(fileName).fontWeight(.semibold)
                 Spacer()
-                Button(action: {
-                    withAnimation{
+                
+                Button {
+                    withAnimation {
                         fileToShare.removeAll()
                         pdfShare.document = PDFDocument(url: url)
                         fileToShare.append(NSURL(fileURLWithPath: url.absoluteString))
                         print(fileToShare.description)
                         share.toggle()
                     }
-                }){
+                } label: {
                     Image(systemName: "square.and.arrow.up").font(.title3)
-                }.sheet(isPresented: $share, content: {
-                    //                    ActivityViewController(activityItems: [pdfShare.document?.dataRepresentation()]).edgesIgnoringSafeArea(.all)
-                    ShareActivityViewController(activityItems: [NSURL(fileURLWithPath: url.relativePath)]).edgesIgnoringSafeArea(.all)
-                })
-            }.padding()
+                }
+                
+                .sheet(isPresented: $share) {
+                    let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
+                    ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
+                }
+            }
+            .padding()
+            
             PDFKitRepresentedView(url)
             Spacer()
-            Button(action: {
+
+            Button {
                 printPDF = true
-            }){
+            } label: {
                 Text(Constants.Titles.Buttons.print)
             }
         }
     }
+
 }

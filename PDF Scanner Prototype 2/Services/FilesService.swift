@@ -18,67 +18,79 @@ protocol FileService {
 
 final class FileServiceImplementation: FileService {
     
-    
     // MARK: FileService
     
     func getDocumentsDirectory() -> [String] {
-        do {
-            var a : [String] = []
-            let fm = FileManager.default
-            let path =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].path
-            print(path)
-            let items = try fm.contentsOfDirectory(atPath: path)
-            
-            for item in items {
-                print("Found \(item)")
-                a.append(item.description)
-            }
-            return a
-        } catch {
-            // failed to read directory – bad permissions, perhaps?
-            let a : [String] = []
-            return a
-        }
+        let fileManager = FileManager.default
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let urlPath = urls[0].path
+
+        var documentsLocationDescriptios : [String] = []
+        tryExtractDocumentLocationsAndFill(&documentsLocationDescriptios, using: fileManager, urlPath)
+        
+        return documentsLocationDescriptios
     }
 
     func deleteFileWith(fileName: String) {
+        let fileManager = FileManager.default
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentDirectory = paths[0]
         let filePath = documentDirectory.appendingFormat("/" + fileName)
         
-        do {
-            let fileManager = FileManager.default
-            // Check if file exists
-            if fileManager.fileExists(atPath: filePath) {
-                // Delete file
-                try fileManager.removeItem(atPath: filePath)
-            } else {
-                print("File does not exist")
-            }
-        }
-        catch let error as NSError {
-            print("An error took place: \(error)")
-        }
-        print("removed")
+        tryRemoveFilePath(from: fileManager, with: filePath)
     }
 
     func saveDocumentWith(images: [UIImage], pdfName: String) {
+        var pdfDocument = PDFDocument()
+        insertPages(to: &pdfDocument, with: images)
         
-        do{
-            let pdfDocument = PDFDocument()
+        var pdfData = pdfDocument.dataRepresentation()
+        tryCreateDocumentURLAndInsert(to: &pdfData, using: pdfName)
+    }
+    
+    // MARK: Private
+    
+    private func tryExtractDocumentLocationsAndFill(_ documentsLocationDescriptios: inout [String],
+                                                    using fileManager: FileManager, _ urlPath: String) {
+        do {
+            let items = try fileManager.contentsOfDirectory(atPath: urlPath)
             
-            for i in images.indices{
-                let pdfPage = PDFPage(image: images[i])
-                pdfDocument.insert(pdfPage!, at: i)
+            for item in items {
+                documentsLocationDescriptios.append(item.description)
             }
-            
-            let data = pdfDocument.dataRepresentation()
-            let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let docURL = documentDirectory.appendingPathComponent((pdfName + ".pdf"))
-            print(docURL)
-            try data?.write(to: docURL)
-        }catch(let error){
-            print("error is \(error.localizedDescription)")
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+    }
+    
+    private func tryRemoveFilePath(from fileManager: FileManager, with filePath: String) {
+        do {
+            guard fileManager.fileExists(atPath: filePath) else {
+                return
+            }
+
+            try fileManager.removeItem(atPath: filePath)
+        }
+        catch {
+            assertionFailure(error.localizedDescription)
+        }
+    }
+    
+    private func insertPages(to pdfDocument: inout PDFDocument, with images: [UIImage]) {
+        for (index, image) in images.enumerated() {
+            let pdfPage = PDFPage(image: image)
+            pdfDocument.insert(pdfPage!, at: index)
+        }
+    }
+    
+    private func tryCreateDocumentURLAndInsert(to pdfData: inout Data?, using pdfName: String) {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let documentURL = documentDirectory.appendingPathComponent((pdfName + ".pdf"))
+        
+        do {
+            try pdfData?.write(to: documentURL)
+        } catch {
+            assertionFailure(error.localizedDescription)
         }
     }
     

@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ShareActivityViewController: UIViewControllerRepresentable {
     
+    // MARK: Properties
+    
     var activityItems: [Any]
     var applicationActivities: [UIActivity]? = nil
     
+    // MARK: Events
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<ShareActivityViewController>) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        let controller = UIActivityViewController(activityItems: activityItems,
+                                                  applicationActivities: applicationActivities)
         return controller
     }
     

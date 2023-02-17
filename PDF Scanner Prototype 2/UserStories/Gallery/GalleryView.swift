@@ -10,7 +10,7 @@ import VisionKit
 import PDFKit
 
 struct GalleryView: View {
-
+    
     // MARK: Properties
     
     internal let filesService: FileService
@@ -30,15 +30,15 @@ struct GalleryView: View {
     // MARK: Layout
     
     var body: some View {
-        ZStack{
-            if(PDFview){
+        ZStack {
+            if PDFview {
                 PDFOpenView(url: url!, fileName: fileName, PDFview: $PDFview)
             }
-            else{
-                NavigationView{
-                    VStack{
-                        PDFView.onAppear{
-                            withAnimation(){
+            else {
+                NavigationView {
+                    VStack {
+                        PDFView.onAppear {
+                            withAnimation() {
                                 files = filesService.getDocumentsDirectory()
                             }
                         }
@@ -49,5 +49,5 @@ struct GalleryView: View {
             }
         }
     }
-
+    
 }

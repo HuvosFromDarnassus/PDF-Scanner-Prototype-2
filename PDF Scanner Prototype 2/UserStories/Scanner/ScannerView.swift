@@ -6,20 +6,21 @@
 //
 
 import SwiftUI
+import UIKit
 import VisionKit
 import PDFKit
-import UIKit
 
 struct scanView: View{
     
     // MARK: Properties
     
     internal let filesService: FileService
+    
+    @ObservedObject
+    var scannerModel: ScannerModel
 
     @Binding
     var files : [String]
-    @ObservedObject
-    var scannerModel: ScannerModel
     @Environment(\.presentationMode)
     var mode
     
@@ -30,9 +31,9 @@ struct scanView: View{
 
     // MARK: Layout
     
-    var body: some View{
-        ZStack{
-            VStack{
+    var body: some View {
+        ZStack {
+            VStack {
                 if let error = scannerModel.errorMessage {
                     Text(error)
                 } else {
@@ -43,11 +44,15 @@ struct scanView: View{
                                 Button {
                                     let items = [image]
                                     let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                                    UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.rootViewController?.present(ac, animated: true)
+                                    let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first
+
+                                    window?.rootViewController?.present(ac, animated: true)
                                 } label: {
                                     Label(Constants.Titles.Buttons.share, systemImage: "square.and.arrow.up")
                                 }
+
                                 Divider()
+
                                 Button {
                                     scannerModel.removeImage(image: image)
                                 } label: {
@@ -55,46 +60,55 @@ struct scanView: View{
                                 }
                             }
                     }
-                    Button(action: {
+                    
+                    Button {
                         withAnimation{
                             addDoc = true
                         }
-                    }, label: {
+                    } label: {
                         VStack{
                             Image(systemName: "plus").font(.largeTitle)
                             Text(Constants.Titles.Buttons.scan)
                         }
-                    })
+                    }
                 }
-            }.navigationBarItems( trailing: Button(action:{
-                guard pdfName.count > 0 else{
-                    return
-                }
+            }
+            
+            .navigationBarItems(trailing: Button {
+                guard pdfName.count > 0 else { return }
                 self.mode.wrappedValue.dismiss()
                 filesService.saveDocumentWith(images: scannerModel.imageArray, pdfName: pdfName)
                 scannerModel.imageArray.removeAll()
                 files = filesService.getDocumentsDirectory()
-            }){
+            } label: {
                 Text(Constants.Titles.Buttons.save)
             })
-            if(addDoc){
-                VStack{
+
+            if addDoc {
+                VStack {
                     Spacer()
-                    VStack{
+
+                    VStack {
                         Text(Constants.Titles.Scanner.AddDocument.title).font(.largeTitle)
                         TextField(Constants.Titles.Scanner.AddDocument.TextField.placeHolder, text: $pdfName).multilineTextAlignment(.center)
-                        Button(action: {
-                            guard pdfName.count > 0 else{
-                                return
-                            }
-                            UIApplication.shared.windows.filter({$0.isKeyWindow}).first?.rootViewController?.present(scannerModel.getDocumentCameraViewController(), animated: true, completion: nil)
+
+                        Button {
+                            guard pdfName.count > 0 else { return }
+                            let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first
+                            let documentCameraVC  = scannerModel.getDocumentCameraViewController()
+                            
+                            window?.rootViewController?.present(documentCameraVC, animated: true, completion: nil)
+
                             addDoc = false
-                        }){
+                        } label: {
                             Text(Constants.Titles.Buttons.next).foregroundColor(.white)
                         }
-                    }.padding().background(Color.blue).padding().ignoresSafeArea()
+                    }
+
+                    .padding().background(Color.blue).padding().ignoresSafeArea()
                 }
             }
         }
     }
+
 }

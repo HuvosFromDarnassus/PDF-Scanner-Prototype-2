@@ -10,22 +10,27 @@ import PDFKit
 
 struct PDFKitRepresentedView: UIViewRepresentable {
     
+    // MARK: Properties
+
     let url: URL
     
+    // MARK: Initializers
+
     init(_ url: URL) {
         self.url = url
     }
     
+    // MARK: Events
+
     func makeUIView(context: UIViewRepresentableContext<PDFKitRepresentedView>) -> PDFKitRepresentedView.UIViewType {
-        // Create a `PDFView` and set its `PDFDocument`.
         let pdfView = PDFView()
         pdfView.document = PDFDocument(url: self.url)
         pdfView.pageBreakMargins = UIEdgeInsets(top: 50, left: 30, bottom: 50, right:30)
         pdfView.autoScales = true
+
         return pdfView
     }
-    
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PDFKitRepresentedView>) {
-        // Update the view.
-    }
+
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PDFKitRepresentedView>) {}
+
 }
