@@ -10,7 +10,7 @@ import UIKit
 import VisionKit
 import PDFKit
 
-struct scanView: View{
+struct ScanView: View {
     
     // MARK: Properties
     

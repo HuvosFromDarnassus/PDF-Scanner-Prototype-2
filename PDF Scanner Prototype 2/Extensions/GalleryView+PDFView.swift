@@ -10,7 +10,7 @@ import SwiftUI
 
 extension GalleryView {
     
-    var PDFView: some View {
+    var pdfView: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: UIScreen.main.bounds.width / 4))], spacing: 20) {
             ForEach( files.indices, id: \.self) { file in
                 VStack {
@@ -50,7 +50,7 @@ extension GalleryView {
             VStack {
                 Spacer()
 
-                let scanView = scanView(filesService: filesService, scannerModel: scannerModel, files: $files)
+                let scanView = ScanView(filesService: filesService, scannerModel: scannerModel, files: $files)
                 NavigationLink(destination: scanView) {
                     VStack{
                         Image(systemName: "plus").font(.largeTitle).padding(.bottom)

@@ -8,7 +8,7 @@
 import SwiftUI
 import PDFKit
 
-struct PDFOpenView: View{
+struct PDFOpenView: View {
     
     // MARK: Properties
     

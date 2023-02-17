@@ -37,7 +37,7 @@ struct GalleryView: View {
             else {
                 NavigationView {
                     VStack {
-                        PDFView.onAppear {
+                        pdfView.onAppear {
                             withAnimation() {
                                 files = filesService.getDocumentsDirectory()
                             }
