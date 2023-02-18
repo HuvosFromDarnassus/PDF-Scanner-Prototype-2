@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651A7D2D29A0C78500EAB727 /* ConvertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A7D2C29A0C78500EAB727 /* ConvertService.swift */; };
+		651A7D2F29A0CB8900EAB727 /* PDFPreviewNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A7D2E29A0CB8900EAB727 /* PDFPreviewNavigationBar.swift */; };
+		651A7D3129A0CBE500EAB727 /* UIImage+MergeWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A7D3029A0CBE500EAB727 /* UIImage+MergeWith.swift */; };
+		651A7D3429A0CD0D00EAB727 /* PDFEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A7D3329A0CD0D00EAB727 /* PDFEditorView.swift */; };
+		651A7D3829A0CD5E00EAB727 /* PDFEditCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A7D3729A0CD5E00EAB727 /* PDFEditCanvasView.swift */; };
+		651A7D3B29A0CDA700EAB727 /* CanvasCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A7D3A29A0CDA700EAB727 /* CanvasCoordinator.swift */; };
 		65ACBDA7299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDA6299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift */; };
 		65ACBDA9299E7CD7002D324C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDA8299E7CD7002D324C /* GalleryView.swift */; };
 		65ACBDAB299E7CD8002D324C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65ACBDAA299E7CD8002D324C /* Assets.xcassets */; };
@@ -15,14 +21,20 @@
 		65ACBDB8299E83EC002D324C /* ScannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDB7299E83EB002D324C /* ScannerModel.swift */; };
 		65ACBDBA299E8468002D324C /* FilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDB9299E8468002D324C /* FilesService.swift */; };
 		65ACBDBC299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBB299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift */; };
-		65ACBDBE299E87A7002D324C /* PDFKitRepresentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBD299E87A7002D324C /* PDFKitRepresentedView.swift */; };
+		65ACBDBE299E87A7002D324C /* PDFWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBD299E87A7002D324C /* PDFWrapperView.swift */; };
 		65ACBDC0299E8805002D324C /* ShareActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */; };
 		65ACBDC9299E89A7002D324C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDC8299E89A7002D324C /* Constants.swift */; };
-		65ACBDCB299E8D0D002D324C /* PDFOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDCA299E8D0D002D324C /* PDFOpenView.swift */; };
-		65ACBDCE299E900F002D324C /* GalleryView+PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDCD299E900F002D324C /* GalleryView+PDFView.swift */; };
+		65ACBDCB299E8D0D002D324C /* PDFPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDCA299E8D0D002D324C /* PDFPreviewView.swift */; };
+		65ACBDCE299E900F002D324C /* GalleryView+Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ACBDCD299E900F002D324C /* GalleryView+Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		651A7D2C29A0C78500EAB727 /* ConvertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertService.swift; sourceTree = "<group>"; };
+		651A7D2E29A0CB8900EAB727 /* PDFPreviewNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewNavigationBar.swift; sourceTree = "<group>"; };
+		651A7D3029A0CBE500EAB727 /* UIImage+MergeWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+MergeWith.swift"; sourceTree = "<group>"; };
+		651A7D3329A0CD0D00EAB727 /* PDFEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFEditorView.swift; sourceTree = "<group>"; };
+		651A7D3729A0CD5E00EAB727 /* PDFEditCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFEditCanvasView.swift; sourceTree = "<group>"; };
+		651A7D3A29A0CDA700EAB727 /* CanvasCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasCoordinator.swift; sourceTree = "<group>"; };
 		65ACBDA3299E7CD7002D324C /* PDF Scanner Prototype 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDF Scanner Prototype 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65ACBDA6299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF_Scanner_Prototype_2App.swift; sourceTree = "<group>"; };
 		65ACBDA8299E7CD7002D324C /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -32,11 +44,11 @@
 		65ACBDB7299E83EB002D324C /* ScannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModel.swift; sourceTree = "<group>"; };
 		65ACBDB9299E8468002D324C /* FilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesService.swift; sourceTree = "<group>"; };
 		65ACBDBB299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScannerModel+VNDocumentCameraViewControllerDelegate.swift"; sourceTree = "<group>"; };
-		65ACBDBD299E87A7002D324C /* PDFKitRepresentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitRepresentedView.swift; sourceTree = "<group>"; };
+		65ACBDBD299E87A7002D324C /* PDFWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFWrapperView.swift; sourceTree = "<group>"; };
 		65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityViewController.swift; sourceTree = "<group>"; };
 		65ACBDC8299E89A7002D324C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		65ACBDCA299E8D0D002D324C /* PDFOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFOpenView.swift; sourceTree = "<group>"; };
-		65ACBDCD299E900F002D324C /* GalleryView+PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryView+PDFView.swift"; sourceTree = "<group>"; };
+		65ACBDCA299E8D0D002D324C /* PDFPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewView.swift; sourceTree = "<group>"; };
+		65ACBDCD299E900F002D324C /* GalleryView+Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryView+Grid.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +62,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		651A7D3229A0CCAF00EAB727 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDCA299E8D0D002D324C /* PDFPreviewView.swift */,
+				651A7D3D29A0DDC200EAB727 /* ViewDatas */,
+				651A7D3529A0CD4000EAB727 /* Views */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		651A7D3529A0CD4000EAB727 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				651A7D2E29A0CB8900EAB727 /* PDFPreviewNavigationBar.swift */,
+				65ACBDBD299E87A7002D324C /* PDFWrapperView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		651A7D3629A0CD4800EAB727 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				651A7D3329A0CD0D00EAB727 /* PDFEditorView.swift */,
+				651A7D3C29A0CDCC00EAB727 /* ViewDatas */,
+				651A7D3929A0CD9F00EAB727 /* Views */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		651A7D3929A0CD9F00EAB727 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				651A7D3729A0CD5E00EAB727 /* PDFEditCanvasView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		651A7D3C29A0CDCC00EAB727 /* ViewDatas */ = {
+			isa = PBXGroup;
+			children = (
+				651A7D3A29A0CDA700EAB727 /* CanvasCoordinator.swift */,
+			);
+			path = ViewDatas;
+			sourceTree = "<group>";
+		};
+		651A7D3D29A0DDC200EAB727 /* ViewDatas */ = {
+			isa = PBXGroup;
+			children = (
+				65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */,
+			);
+			path = ViewDatas;
+			sourceTree = "<group>";
+		};
 		65ACBD9A299E7CD7002D324C = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				65ACBDA8299E7CD7002D324C /* GalleryView.swift */,
-				65ACBDC7299E8963002D324C /* ViewDatas */,
-				65ACBDCC299E8D39002D324C /* Views */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -118,7 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				65ACBDBB299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift */,
-				65ACBDCD299E900F002D324C /* GalleryView+PDFView.swift */,
+				65ACBDCD299E900F002D324C /* GalleryView+Grid.swift */,
+				651A7D3029A0CBE500EAB727 /* UIImage+MergeWith.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -127,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				65ACBDB9299E8468002D324C /* FilesService.swift */,
+				651A7D2C29A0C78500EAB727 /* ConvertService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -145,25 +210,10 @@
 			children = (
 				65ACBDC2299E8866002D324C /* Gallery */,
 				65ACBDC5299E88D5002D324C /* Scanner */,
+				651A7D3229A0CCAF00EAB727 /* Preview */,
+				651A7D3629A0CD4800EAB727 /* Editor */,
 			);
 			path = UserStories;
-			sourceTree = "<group>";
-		};
-		65ACBDC7299E8963002D324C /* ViewDatas */ = {
-			isa = PBXGroup;
-			children = (
-				65ACBDBF299E8805002D324C /* ShareActivityViewController.swift */,
-				65ACBDBD299E87A7002D324C /* PDFKitRepresentedView.swift */,
-			);
-			path = ViewDatas;
-			sourceTree = "<group>";
-		};
-		65ACBDCC299E8D39002D324C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				65ACBDCA299E8D0D002D324C /* PDFOpenView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,16 +286,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651A7D3129A0CBE500EAB727 /* UIImage+MergeWith.swift in Sources */,
 				65ACBDBC299E84D1002D324C /* ScannerModel+VNDocumentCameraViewControllerDelegate.swift in Sources */,
 				65ACBDC0299E8805002D324C /* ShareActivityViewController.swift in Sources */,
 				65ACBDB8299E83EC002D324C /* ScannerModel.swift in Sources */,
-				65ACBDCB299E8D0D002D324C /* PDFOpenView.swift in Sources */,
+				65ACBDCB299E8D0D002D324C /* PDFPreviewView.swift in Sources */,
 				65ACBDB5299E7E6E002D324C /* ScannerView.swift in Sources */,
-				65ACBDCE299E900F002D324C /* GalleryView+PDFView.swift in Sources */,
+				651A7D2D29A0C78500EAB727 /* ConvertService.swift in Sources */,
+				65ACBDCE299E900F002D324C /* GalleryView+Grid.swift in Sources */,
 				65ACBDA9299E7CD7002D324C /* GalleryView.swift in Sources */,
+				651A7D3829A0CD5E00EAB727 /* PDFEditCanvasView.swift in Sources */,
 				65ACBDBA299E8468002D324C /* FilesService.swift in Sources */,
 				65ACBDA7299E7CD7002D324C /* PDF_Scanner_Prototype_2App.swift in Sources */,
-				65ACBDBE299E87A7002D324C /* PDFKitRepresentedView.swift in Sources */,
+				65ACBDBE299E87A7002D324C /* PDFWrapperView.swift in Sources */,
+				651A7D3B29A0CDA700EAB727 /* CanvasCoordinator.swift in Sources */,
+				651A7D3429A0CD0D00EAB727 /* PDFEditorView.swift in Sources */,
+				651A7D2F29A0CB8900EAB727 /* PDFPreviewNavigationBar.swift in Sources */,
 				65ACBDC9299E89A7002D324C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@ protocol FileService {
     func getDocumentsDirectory() -> [String]
     func deleteFileWith(fileName: String)
     func saveDocumentWith(images: [UIImage], pdfName: String)
+    func rewrite(editedDocument: PDFDocument?, to url: URL)
     
 }
 
@@ -46,6 +47,12 @@ final class FileServiceImplementation: FileService {
         
         var pdfData = pdfDocument.dataRepresentation()
         tryCreateDocumentURLAndInsert(to: &pdfData, using: pdfName)
+    }
+    
+    func rewrite(editedDocument: PDFDocument?, to url: URL) {
+        let newPDFView = PDFView()
+        newPDFView.document = editedDocument
+        newPDFView.document?.write(to: url)
     }
     
     // MARK: Private

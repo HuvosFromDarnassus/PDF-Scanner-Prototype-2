@@ -14,6 +14,7 @@ struct GalleryView: View {
     // MARK: Properties
     
     internal let filesService: FileService
+    internal let convertService: ConvertService
     
     @ObservedObject
     internal var scannerModel: ScannerModel
@@ -21,7 +22,7 @@ struct GalleryView: View {
     @State
     internal var files : [String] = []
     @State
-    internal var PDFview = false
+    internal var isPDFPreviewPresent = false
     @State
     internal var fileName = ""
     @State
@@ -29,15 +30,19 @@ struct GalleryView: View {
     
     // MARK: Layout
     
-    var body: some View {
+    internal var body: some View {
         ZStack {
-            if PDFview {
-                PDFOpenView(url: url!, fileName: fileName, isPDFOpenView: $PDFview)
+            if isPDFPreviewPresent {
+                PDFPreviewView(filesService: filesService,
+                               convertService: convertService,
+                               url: url!,
+                               fileName: fileName,
+                               isPDFOpenView: $isPDFPreviewPresent)
             }
             else {
                 NavigationView {
                     VStack {
-                        pdfView.onAppear {
+                        grid.onAppear {
                             withAnimation() {
                                 files = filesService.getDocumentsDirectory()
                             }

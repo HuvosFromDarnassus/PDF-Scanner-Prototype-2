@@ -17,11 +17,12 @@ enum Constants {
             static let scan: String = "Scan Document"
             static let save: String = "Save"
             static let next: String = "Next"
+            static let edit: String = "Edit"
         }
         
         enum Gallery {
             
-            static let title: String = "PDF Scanner Prototype"
+            static let title: String = "🖨️ PDF Scanner"
             
             enum Cell {
                 static let newDocument: String = "Add"
@@ -30,7 +31,7 @@ enum Constants {
         
         enum Scanner {
             enum AddDocument {
-                static let title: String = "Please Enter a Title"
+                static let title: String = "📄 Please Enter a Title"
                 
                 enum TextField {
                     static let placeHolder: String = "Enter Title"
