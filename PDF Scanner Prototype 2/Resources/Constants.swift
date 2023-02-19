@@ -18,6 +18,23 @@ enum Constants {
             static let save: String = "Save"
             static let next: String = "Next"
             static let edit: String = "Edit"
+            static let extractText: String = "Extact text"
+            static let ok: String = "OK"
+        }
+        
+        enum Alert {
+            
+            enum Success {
+                
+                static let title: String = "Done!"
+                
+                enum Message {
+                    static let save: String = "Successfully saved."
+                    static let textExtract: String = "📃 Text successfully extracted from "
+                }
+                
+            }
+            
         }
         
         enum Gallery {

@@ -37,11 +37,12 @@ struct PDFPreviewNavigationBar: View {
             Text(fileName).fontWeight(.semibold)
             Spacer()
             
-            shareButtonView
-            
-            .sheet(isPresented: $isPreviewSharePresent) {
-                let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
-                ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
+            if !isEditPDF {
+                shareButtonView
+                    .sheet(isPresented: $isPreviewSharePresent) {
+                        let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
+                        ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
+                    }
             }
         }
     }

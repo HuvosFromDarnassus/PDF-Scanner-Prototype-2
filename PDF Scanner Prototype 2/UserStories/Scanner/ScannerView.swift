@@ -29,6 +29,9 @@ struct ScanView: View {
     @State
     internal var isAddNewDocument = false
     
+    @State
+    private var isSaveSuccessAlertPresent = false
+    
     // MARK: Layout
     
     internal var body: some View {
@@ -47,9 +50,16 @@ struct ScanView: View {
                 filesService.saveDocumentWith(images: scannerModel.imageArray, pdfName: pdfName)
                 scannerModel.imageArray.removeAll()
                 files = filesService.getDocumentsDirectory()
+                isSaveSuccessAlertPresent.toggle()
             } label: {
                 Text(Constants.Titles.Buttons.save)
             })
+            
+            .alert(isPresented: $isSaveSuccessAlertPresent) {
+                Alert(title: Text(Constants.Titles.Alert.Success.title),
+                      message: Text("📄\(pdfName) \(Constants.Titles.Alert.Success.Message.save)"),
+                      dismissButton: .default(Text(Constants.Titles.Buttons.ok)))
+            }
             
             if isAddNewDocument {
                 addDocumentPopupView

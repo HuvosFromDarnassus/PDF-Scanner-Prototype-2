@@ -14,6 +14,7 @@ struct PDF_Scanner_Prototype_2App: App {
     
     private let filesService: FileService = FileServiceImplementation()
     private let convertService: ConvertService = ConvertServiceImplementation()
+    private let extractService: ExtractService = ExtractServiceImplemenation()
 
     // MARK: Layout
     
@@ -21,6 +22,7 @@ struct PDF_Scanner_Prototype_2App: App {
         WindowGroup {
             GalleryView(filesService: filesService,
                         convertService: convertService,
+                        extractService: extractService,
                         scannerModel: ScannerModel())
         }
     }

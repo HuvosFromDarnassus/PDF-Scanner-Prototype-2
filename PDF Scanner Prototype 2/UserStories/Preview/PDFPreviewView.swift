@@ -15,6 +15,7 @@ struct PDFPreviewView: View {
     
     internal let filesService: FileService
     internal let convertService: ConvertService
+    internal let extractService: ExtractService
     
     var url: URL
     var fileName: String
@@ -24,6 +25,8 @@ struct PDFPreviewView: View {
     
     @State
     private var isEditorSharePresent = false
+    @State
+    private var isExtractTextSuccessAlertPresent = false
     @State
     private var isPrintPDF = false
     @State
@@ -57,12 +60,37 @@ struct PDFPreviewView: View {
             else {
                 PDFWrapperView(url)
                 Spacer()
-                
-                Button {
-                    isEditPDF = true
-                } label: {
-                    Text(Constants.Titles.Buttons.edit)
+                previewButtonsView
+            }
+        }
+    }
+    
+    // MARK: Views
+    
+    private var previewButtonsView: some View {
+        HStack(spacing: 30) {
+            Button {
+                let convertedImageFromPDF = convertService.convertPDFToImage(with: url)
+                let extractedText = extractService.extractText(from: convertedImageFromPDF)
+
+                if !extractedText.isEmpty {
+                    filesService.saveToPasteboard(string: extractedText)
+                    isExtractTextSuccessAlertPresent.toggle()
                 }
+            } label: {
+                Text(Constants.Titles.Buttons.extractText)
+            }
+            
+            Button {
+                isEditPDF = true
+            } label: {
+                Text(Constants.Titles.Buttons.edit)
+            }
+            
+            .alert(isPresented: $isExtractTextSuccessAlertPresent) {
+                Alert(title: Text(Constants.Titles.Alert.Success.title),
+                      message: Text("\(Constants.Titles.Alert.Success.Message.textExtract) \(fileName)."),
+                      dismissButton: .default(Text(Constants.Titles.Buttons.ok)))
             }
         }
     }

@@ -9,16 +9,16 @@ import UIKit
 import PDFKit
 
 protocol ConvertService {
-    
+
     func convertPDFToImage(with url: URL) -> UIImage?
     func convertImageToPDF(with image: UIImage, using url: URL) -> PDFDocument?
-    
+
 }
 
 final class ConvertServiceImplementation: ConvertService {
-    
+
     // MARK: ConvertService
-    
+
     func convertPDFToImage(with url: URL) -> UIImage? {
         guard let document = CGPDFDocument(url as CFURL),
               let page = document.page(at: 1) else { return nil }
@@ -37,7 +37,7 @@ final class ConvertServiceImplementation: ConvertService {
 
         return img
     }
-    
+
     func convertImageToPDF(with image: UIImage, using url: URL) -> PDFDocument? {
         guard let pdfPage = PDFPage(image: image),
               let pdfDocument = PDFDocument(url: url) else { return nil }
@@ -45,5 +45,5 @@ final class ConvertServiceImplementation: ConvertService {
 
         return pdfDocument
     }
-    
+
 }

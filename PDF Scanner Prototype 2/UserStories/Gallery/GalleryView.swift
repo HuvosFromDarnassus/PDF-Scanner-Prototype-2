@@ -15,6 +15,7 @@ struct GalleryView: View {
     
     internal let filesService: FileService
     internal let convertService: ConvertService
+    internal let extractService: ExtractService
     
     @ObservedObject
     internal var scannerModel: ScannerModel
@@ -38,6 +39,7 @@ struct GalleryView: View {
             else {
                 PDFPreviewView(filesService: filesService,
                                convertService: convertService,
+                               extractService: extractService,
                                url: url!,
                                fileName: fileName,
                                isPDFOpenView: $isPDFPreviewPresent)
