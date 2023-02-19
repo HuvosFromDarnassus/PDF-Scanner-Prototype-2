@@ -37,8 +37,8 @@ struct ScanView: View {
                 if let error = scannerModel.errorMessage {
                     Text(error)
                 } else {
-                    scanImagesLoop
-                    addScanButton
+                    scanImagesLoopView
+                    addScanButtonView
                 }
             }
             .navigationBarItems(trailing: Button {
@@ -52,14 +52,14 @@ struct ScanView: View {
             })
             
             if isAddNewDocument {
-                addDocumentPopup
+                addDocumentPopupView
             }
         }
     }
     
     // MARK: Views
     
-    private var scanImagesLoop: some View {
+    private var scanImagesLoopView: some View {
         ForEach(scannerModel.imageArray, id: \.self) { image in
             Image(uiImage: image)
                 .resizable()
@@ -85,7 +85,7 @@ struct ScanView: View {
         }
     }
     
-    private var addScanButton: some View {
+    private var addScanButtonView: some View {
         Button {
             withAnimation {
                 isAddNewDocument = true
@@ -98,14 +98,14 @@ struct ScanView: View {
         }
     }
     
-    private var addDocumentPopup: some View {
+    private var addDocumentPopupView: some View {
         VStack {
             Spacer()
             
             VStack {
                 Text(Constants.Titles.Scanner.AddDocument.title).font(.largeTitle)
                 TextField(Constants.Titles.Scanner.AddDocument.TextField.placeHolder, text: $pdfName).multilineTextAlignment(.center)
-                addDocumentNextButton
+                addDocumentNextButtonView
             }
             
             .padding()
@@ -115,7 +115,7 @@ struct ScanView: View {
         }
     }
     
-    private var addDocumentNextButton: some View {
+    private var addDocumentNextButtonView: some View {
         Button {
             guard pdfName.count > 0 else { return }
             let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first

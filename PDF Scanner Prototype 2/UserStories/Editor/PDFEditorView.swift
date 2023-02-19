@@ -30,14 +30,14 @@ struct PDFEditorView: View {
 
     var body: some View {
         VStack {
-            saveButton
-            editablePDFImage
+            saveButtonView
+            editablePDFImageView
         }
     }
     
     // MARK: Views
     
-    private var editablePDFImage: some View {
+    private var editablePDFImageView: some View {
         Image(uiImage: self.image)
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -47,7 +47,7 @@ struct PDFEditorView: View {
                      alignment: .bottomLeading)
     }
     
-    private var saveButton: some View {
+    private var saveButtonView: some View {
         Button {
             save()
         } label: {

@@ -10,10 +10,10 @@ import SwiftUI
 
 extension GalleryView {
     
-    internal var grid: some View {
+    internal var gridView: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: UIScreen.main.bounds.width / 4))], spacing: 20) {
-            gridLoop
-            addDocumentLink
+            gridLoopView
+            addDocumentLinkView
                 .padding()
                 .frame(width: UIScreen.main.bounds.width / 4,
                        height: UIScreen.main.bounds.width / 3)
@@ -23,7 +23,7 @@ extension GalleryView {
         .padding()
     }
     
-    internal var addDocumentLink: some View {
+    internal var addDocumentLinkView: some View {
         VStack {
             Spacer()
 
@@ -43,7 +43,7 @@ extension GalleryView {
 
 extension GalleryView {
     
-    internal var gridLoop: some View {
+    internal var gridLoopView: some View {
         ForEach( files.indices, id: \.self) { file in
             VStack {
                 Image(Constants.Images.Icons.doc).resizable().aspectRatio(contentMode: .fit)

@@ -32,26 +32,32 @@ struct GalleryView: View {
     
     internal var body: some View {
         ZStack {
-            if isPDFPreviewPresent {
+            if !isPDFPreviewPresent {
+                gridNavigationView
+            }
+            else {
                 PDFPreviewView(filesService: filesService,
                                convertService: convertService,
                                url: url!,
                                fileName: fileName,
                                isPDFOpenView: $isPDFPreviewPresent)
             }
-            else {
-                NavigationView {
-                    VStack {
-                        grid.onAppear {
-                            withAnimation() {
-                                files = filesService.getDocumentsDirectory()
-                            }
-                        }
-                        Spacer()
+        }
+    }
+    
+    // MARK: View
+    
+    private var gridNavigationView: some View {
+        NavigationView {
+            VStack {
+                gridView.onAppear {
+                    withAnimation() {
+                        files = filesService.getDocumentsDirectory()
                     }
-                    .navigationBarTitle(Constants.Titles.Gallery.title, displayMode: .large)
                 }
+                Spacer()
             }
+            .navigationBarTitle(Constants.Titles.Gallery.title, displayMode: .large)
         }
     }
     

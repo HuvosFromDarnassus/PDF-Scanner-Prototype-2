@@ -31,13 +31,13 @@ struct PDFPreviewNavigationBar: View {
     
     var body: some View {
         HStack(alignment: .bottom) {
-            backButton
+            backButtonView
             
             Spacer()
             Text(fileName).fontWeight(.semibold)
             Spacer()
             
-            shareButton
+            shareButtonView
             
             .sheet(isPresented: $isPreviewSharePresent) {
                 let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
@@ -48,7 +48,7 @@ struct PDFPreviewNavigationBar: View {
     
     // MARK: Views
     
-    private var backButton: some View {
+    private var backButtonView: some View {
         Button(Constants.Titles.Buttons.back) {
             withAnimation {
                 if isEditPDF {
@@ -61,7 +61,7 @@ struct PDFPreviewNavigationBar: View {
         }
     }
     
-    private var shareButton: some View {
+    private var shareButtonView: some View {
         Button {
             withAnimation {
                 fileToShare.removeAll()
