@@ -12,9 +12,8 @@ struct PDFEditorView: View {
     
     // MARK: Properties
 
-    var image: UIImage
-
-    let onSave: (UIImage) -> Void
+    private var image: UIImage
+    private let onSave: (UIImage) -> Void
 
     @State private var drawingOnImage: UIImage = UIImage()
     @State private var canvasView: PKCanvasView = PKCanvasView()
@@ -50,9 +49,7 @@ struct PDFEditorView: View {
     private var saveButtonView: some View {
         Button {
             save()
-        } label: {
-            Text(Constants.Titles.Buttons.save)
-        }
+        } label: { Text(Constants.Titles.Buttons.save) }
     }
     
     // MARK: Private

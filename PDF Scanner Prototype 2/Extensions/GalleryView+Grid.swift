@@ -51,20 +51,14 @@ extension GalleryView {
 
                 Text("\(files[file])").font(.caption).onTapGesture {
                     withAnimation{
-                        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                        let documentDirectory = paths[0].appendingPathComponent(files[file])
-                        let filePath = documentDirectory
-
-                        url = filePath
-                        fileName = files[file]
-                        isPDFPreviewPresent = true
+                        prepareAndOpenFilePreview(of: files[file])
                     }
                 }
             }
             .padding()
+            .background(Color(.secondarySystemBackground))
             .frame(width: UIScreen.main.bounds.width / 4,
                    height: UIScreen.main.bounds.width / 3)
-            .background(Color(.secondarySystemBackground))
 
             .overlay(
                 VStack {
@@ -74,9 +68,7 @@ extension GalleryView {
                         Button {
                             filesService.deleteFileWith(fileName: files[file])
                             files.remove(at: file)
-                        } label: {
-                            Text(Constants.Titles.Buttons.delete)
-                        }
+                        } label: { Text(Constants.Titles.Buttons.delete) }
                     }
 
                     Spacer()
@@ -84,6 +76,18 @@ extension GalleryView {
             )
             .padding(.horizontal)
         }
+    }
+    
+    // MARK: Private
+    
+    private func prepareAndOpenFilePreview(of file: String) {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = paths[0].appendingPathComponent(file)
+        let filePath = documentDirectory
+
+        url = filePath
+        fileName = file
+        isPDFPreviewPresent = true
     }
     
 }

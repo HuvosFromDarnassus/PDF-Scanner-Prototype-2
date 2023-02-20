@@ -12,8 +12,8 @@ class CanvasCoordinator: NSObject {
     
     // MARK: Properties
 
-    var canvasView: Binding<PKCanvasView>
-    let onSaved: () -> Void
+    private var canvasView: Binding<PKCanvasView>
+    private let onSaved: () -> Void
 
     // MARK: Initializers
     

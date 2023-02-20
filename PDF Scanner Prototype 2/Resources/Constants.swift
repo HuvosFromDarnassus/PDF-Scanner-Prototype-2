@@ -20,6 +20,7 @@ enum Constants {
             static let edit: String = "Edit"
             static let extractText: String = "Extact text"
             static let ok: String = "OK"
+            static let export: String = "Export"
         }
         
         enum Alert {
@@ -48,12 +49,21 @@ enum Constants {
         
         enum Scanner {
             enum AddDocument {
-                static let title: String = "📄 Please Enter a Title"
+                static let title: String = "📄 Please enter a file name"
                 
                 enum TextField {
-                    static let placeHolder: String = "Enter Title"
+                    static let placeHolder: String = "Enter file name"
                 }
             }
+        }
+        
+        enum Export {
+            
+            enum Destination {
+                static let word: String = "To word"
+                static let pasteboard: String = "To pasteboard"
+            }
+            
         }
 
     }

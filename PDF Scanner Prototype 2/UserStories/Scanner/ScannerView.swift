@@ -16,21 +16,16 @@ struct ScanView: View {
     
     internal let filesService: FileService
     
-    @ObservedObject
-    internal var scannerModel: ScannerModel
+    @ObservedObject internal var scannerModel: ScannerModel
     
-    @Binding
-    internal var files: [String]
-    @Environment(\.presentationMode)
-    internal var mode
+    @Environment(\.presentationMode) internal var mode
     
-    @State
-    internal var pdfName = ""
-    @State
-    internal var isAddNewDocument = false
+    @Binding internal var files: [String]
     
-    @State
-    private var isSaveSuccessAlertPresent = false
+    @State internal var pdfName = ""
+    @State internal var isAddNewDocument = false
+    
+    @State private var isSaveSuccessAlertPresent = false
     
     // MARK: Layout
     
@@ -45,11 +40,7 @@ struct ScanView: View {
                 }
             }
             .navigationBarItems(trailing: Button {
-                guard pdfName.count > 0 else { return }
-                self.mode.wrappedValue.dismiss()
-                filesService.saveDocumentWith(images: scannerModel.imageArray, pdfName: pdfName)
-                scannerModel.imageArray.removeAll()
-                files = filesService.getDocumentsDirectory()
+                saveScannedDocuments()
                 isSaveSuccessAlertPresent.toggle()
             } label: {
                 Text(Constants.Titles.Buttons.save)
@@ -111,10 +102,12 @@ struct ScanView: View {
     private var addDocumentPopupView: some View {
         VStack {
             Spacer()
-            
             VStack {
-                Text(Constants.Titles.Scanner.AddDocument.title).font(.largeTitle)
-                TextField(Constants.Titles.Scanner.AddDocument.TextField.placeHolder, text: $pdfName).multilineTextAlignment(.center)
+                Text(Constants.Titles.Scanner.AddDocument.title)
+                    .font(.title2)
+                TextField(Constants.Titles.Scanner.AddDocument.TextField.placeHolder, text: $pdfName)
+                    .multilineTextAlignment(.center)
+
                 addDocumentNextButtonView
             }
             
@@ -127,7 +120,7 @@ struct ScanView: View {
     
     private var addDocumentNextButtonView: some View {
         Button {
-            guard pdfName.count > 0 else { return }
+            guard !pdfName.isEmpty else { return }
             let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first
             let documentCameraVC  = scannerModel.getDocumentCameraViewController()
             
@@ -135,8 +128,19 @@ struct ScanView: View {
             
             isAddNewDocument = false
         } label: {
-            Text(Constants.Titles.Buttons.next).foregroundColor(.white)
+            Text(Constants.Titles.Buttons.next)
         }
+    }
+    
+    // MARK: Private
+    
+    private func saveScannedDocuments() {
+        guard !pdfName.isEmpty else { return }
+
+        self.mode.wrappedValue.dismiss()
+        filesService.saveDocumentWith(images: scannerModel.imageArray, pdfName: pdfName)
+        scannerModel.imageArray.removeAll()
+        files = filesService.getDocumentsDirectory()
     }
     
 }

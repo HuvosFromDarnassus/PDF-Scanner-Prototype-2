@@ -20,31 +20,30 @@ struct PDFPreviewView: View {
     var url: URL
     var fileName: String
     
-    @Binding
-    var isPDFOpenView: Bool
+    @Binding var isPreviewOpen: Bool
     
-    @State
-    private var isEditorSharePresent = false
-    @State
-    private var isExtractTextSuccessAlertPresent = false
-    @State
-    private var isPrintPDF = false
-    @State
-    private var isEditPDF = false
+    @State private var isEditorSharePresent: Bool = false
+    @State private var isEditorPresent: Bool = false
+    @State private var isExportViewPresent: Bool = false
 
-    @State
-    private var pdfView = PDFView()
+    @State private var pdfView = PDFView()
+    
+    @State private var extractedText: String = ""
     
     // MARK: Layout
     
     var body: some View {
         VStack {
-            PDFPreviewNavigationBar(url: url, fileName: fileName, isPDFOpenView: $isPDFOpenView, isEditPDF: $isEditPDF)
+            PDFPreviewNavigationBar(url: url,
+                                    fileName: fileName,
+                                    isPreviewOpen: $isPreviewOpen,
+                                    isEditorPresent: $isEditorPresent,
+                                    isExportPresent: $isExportViewPresent)
             .padding()
             
             Spacer()
             
-            if isEditPDF, let convertedImageFromPDF = convertService.convertPDFToImage(with: url) {
+            if isEditorPresent, let convertedImageFromPDF = convertService.convertPDFToImage(with: url) {
                 PDFEditorView(image: convertedImageFromPDF) { editedImage in
                     let pdfDocument = convertService.convertImageToPDF(with: editedImage, using: url)
                     filesService.rewrite(editedDocument: pdfDocument, to: url)
@@ -57,41 +56,45 @@ struct PDFPreviewView: View {
                     ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
                 }
             }
+            else if isExportViewPresent {
+                ExportView(filesService: filesService, fileName: fileName, text: extractedText)
+                Spacer()
+            }
             else {
                 PDFWrapperView(url)
                 Spacer()
-                previewButtonsView
+                bottomButtonsView
+                    .padding()
             }
         }
     }
     
     // MARK: Views
     
-    private var previewButtonsView: some View {
+    private var bottomButtonsView: some View {
         HStack(spacing: 30) {
             Button {
-                let convertedImageFromPDF = convertService.convertPDFToImage(with: url)
-                let extractedText = extractService.extractText(from: convertedImageFromPDF)
+                extractTextFromDocument()
+            } label: { Text(Constants.Titles.Buttons.extractText) }
 
-                if !extractedText.isEmpty {
-                    filesService.saveToPasteboard(string: extractedText)
-                    isExtractTextSuccessAlertPresent.toggle()
-                }
-            } label: {
-                Text(Constants.Titles.Buttons.extractText)
-            }
-            
             Button {
-                isEditPDF = true
-            } label: {
-                Text(Constants.Titles.Buttons.edit)
-            }
-            
-            .alert(isPresented: $isExtractTextSuccessAlertPresent) {
-                Alert(title: Text(Constants.Titles.Alert.Success.title),
-                      message: Text("\(Constants.Titles.Alert.Success.Message.textExtract) \(fileName)."),
-                      dismissButton: .default(Text(Constants.Titles.Buttons.ok)))
-            }
+                withAnimation {
+                    isEditorPresent.toggle()
+                }
+            } label: { Text(Constants.Titles.Buttons.edit) }
+        }
+    }
+    
+    // MARK: Private
+    
+    private func extractTextFromDocument() {
+        let convertedImageFromPDF = convertService.convertPDFToImage(with: url)
+        let extractedText = extractService.extractText(from: convertedImageFromPDF)
+
+        self.extractedText = extractedText
+
+        withAnimation {
+            isExportViewPresent.toggle()
         }
     }
 

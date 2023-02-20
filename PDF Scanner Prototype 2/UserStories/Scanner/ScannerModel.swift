@@ -12,11 +12,8 @@ final class ScannerModel: NSObject, ObservableObject {
     
     // MARK: Properties
     
-    @Published
-    internal var errorMessage: String?
-
-    @Published
-    internal var imageArray: [UIImage] = []
+    @Published internal var errorMessage: String?
+    @Published internal var imageArray: [UIImage] = []
     
     // MARK: Events
     

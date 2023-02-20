@@ -15,17 +15,13 @@ struct PDFPreviewNavigationBar: View {
     var url:  URL
     var fileName: String
     
-    @Binding
-    var isPDFOpenView: Bool
-    @Binding
-    var isEditPDF: Bool
+    @Binding var isPreviewOpen: Bool
+    @Binding var isEditorPresent: Bool
+    @Binding var isExportPresent: Bool
 
-    @State
-    var fileToShare = [Any]()
-    @State
-    var pdfView = PDFView()
-    @State
-    var isPreviewSharePresent = false
+    @State var fileToShare = [Any]()
+    @State var pdfView = PDFView()
+    @State var isPreviewSharePresent = false
     
     // MARK: Layout
     
@@ -37,7 +33,7 @@ struct PDFPreviewNavigationBar: View {
             Text(fileName).fontWeight(.semibold)
             Spacer()
             
-            if !isEditPDF {
+            if !isEditorPresent && !isExportPresent {
                 shareButtonView
                     .sheet(isPresented: $isPreviewSharePresent) {
                         let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
@@ -52,12 +48,7 @@ struct PDFPreviewNavigationBar: View {
     private var backButtonView: some View {
         Button(Constants.Titles.Buttons.back) {
             withAnimation {
-                if isEditPDF {
-                    isEditPDF.toggle()
-                }
-                else {
-                    isPDFOpenView = false
-                }
+                toggleScreensStates()
             }
         }
     }
@@ -72,6 +63,20 @@ struct PDFPreviewNavigationBar: View {
             }
         } label: {
             Image(systemName: "square.and.arrow.up").font(.title3)
+        }
+    }
+    
+    // MARK: Private
+    
+    private func toggleScreensStates() {
+        if isEditorPresent {
+            isEditorPresent.toggle()
+        }
+        else if isExportPresent {
+            isExportPresent.toggle()
+        }
+        else {
+            isPreviewOpen = false
         }
     }
 

@@ -17,17 +17,13 @@ struct GalleryView: View {
     internal let convertService: ConvertService
     internal let extractService: ExtractService
     
-    @ObservedObject
-    internal var scannerModel: ScannerModel
+    @ObservedObject internal var scannerModel: ScannerModel
     
-    @State
-    internal var files : [String] = []
-    @State
-    internal var isPDFPreviewPresent = false
-    @State
-    internal var fileName = ""
-    @State
-    internal var url = URL(string: "")
+    @State internal var files : [String] = []
+    @State internal var fileName = ""
+    @State internal var url = URL(string: "")
+    
+    @State internal var isPDFPreviewPresent = false
     
     // MARK: Layout
     
@@ -42,7 +38,7 @@ struct GalleryView: View {
                                extractService: extractService,
                                url: url!,
                                fileName: fileName,
-                               isPDFOpenView: $isPDFPreviewPresent)
+                               isPreviewOpen: $isPDFPreviewPresent)
             }
         }
     }

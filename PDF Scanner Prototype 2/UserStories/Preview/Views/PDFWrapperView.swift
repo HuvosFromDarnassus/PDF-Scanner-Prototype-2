@@ -12,7 +12,7 @@ struct PDFWrapperView: UIViewRepresentable {
     
     // MARK: Properties
 
-    let url: URL
+    private let url: URL
     
     // MARK: Initializers
 
