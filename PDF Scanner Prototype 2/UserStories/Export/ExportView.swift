@@ -41,7 +41,7 @@ struct ExportView: View {
         
         .sheet(isPresented: $isExporting) {
             exportTypesButtonsView
-                .frame(height: 100)
+                .frame(height: 150)
                 .background(Color(.secondarySystemBackground))
         }
         .sheet(isPresented: $isExportingFileSharePresent) {
@@ -140,9 +140,7 @@ struct ExportView: View {
             withAnimation {
                 saveToTXT()
             }
-        } label: {
-            Text(Constants.Titles.Buttons.submit)
-        }
+        } label: { Text(Constants.Titles.Buttons.submit) }
     }
     
     // MARK: Private

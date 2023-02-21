@@ -37,7 +37,7 @@ struct PDFEditorView: View {
     // MARK: Views
     
     private var editablePDFImageView: some View {
-        Image(uiImage: self.image)
+        Image(uiImage: image)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .edgesIgnoringSafeArea(.all)
@@ -55,19 +55,19 @@ struct PDFEditorView: View {
     // MARK: Private
     
     private func onChanged() -> Void {
-        self.drawingOnImage = canvasView.drawing.image(
+        drawingOnImage = canvasView.drawing.image(
             from: canvasView.bounds, scale: UIScreen.main.scale)
     }
     
     private func initCanvas() -> Void {
-        self.canvasView = PKCanvasView();
-        self.canvasView.isOpaque = false
-        self.canvasView.backgroundColor = UIColor.clear
-        self.canvasView.becomeFirstResponder()
+        canvasView = PKCanvasView();
+        canvasView.isOpaque = false
+        canvasView.backgroundColor = UIColor.clear
+        canvasView.becomeFirstResponder()
     }
     
     private func save() -> Void {
-        onSave(self.image.mergeWith(topImage: drawingOnImage))
+        onSave(image.mergeWith(topImage: drawingOnImage))
     }
     
 }

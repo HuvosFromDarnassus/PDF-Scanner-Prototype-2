@@ -61,9 +61,7 @@ struct PDFPreviewNavigationBar: View {
                 fileToShare.append(NSURL(fileURLWithPath: url.absoluteString))
                 isPreviewSharePresent.toggle()
             }
-        } label: {
-            Image(systemName: "square.and.arrow.up").font(.title3)
-        }
+        } label: { Image(systemName: "square.and.arrow.up").font(.title3) }
     }
     
     // MARK: Private
@@ -76,7 +74,7 @@ struct PDFPreviewNavigationBar: View {
             isExportPresent.toggle()
         }
         else {
-            isPreviewOpen = false
+            isPreviewOpen.toggle()
         }
     }
     

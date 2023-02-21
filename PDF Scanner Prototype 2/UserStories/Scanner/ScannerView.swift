@@ -42,9 +42,7 @@ struct ScanView: View {
             .navigationBarItems(trailing: Button {
                 saveScannedDocuments()
                 isSaveSuccessAlertPresent.toggle()
-            } label: {
-                Text(Constants.Titles.Buttons.save)
-            })
+            } label: { Text(Constants.Titles.Buttons.save) })
             
             .alert(isPresented: $isSaveSuccessAlertPresent) {
                 Alert(title: Text(Constants.Titles.Alert.Success.title),
@@ -71,17 +69,13 @@ struct ScanView: View {
                         let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first
                         
                         window?.rootViewController?.present(activityViewController, animated: true)
-                    } label: {
-                        Label(Constants.Titles.Buttons.share, systemImage: "square.and.arrow.up")
-                    }
+                    } label: { Label(Constants.Titles.Buttons.share, systemImage: "square.and.arrow.up") }
                     
                     Divider()
                     
                     Button {
                         scannerModel.removeImage(image: image)
-                    } label: {
-                        Label(Constants.Titles.Buttons.delete, systemImage: "delete.left")
-                    }
+                    } label: { Label(Constants.Titles.Buttons.delete, systemImage: "delete.left") }
                 }
         }
     }
@@ -127,9 +121,7 @@ struct ScanView: View {
             window?.rootViewController?.present(documentCameraVC, animated: true, completion: nil)
             
             isAddNewDocument = false
-        } label: {
-            Text(Constants.Titles.Buttons.next)
-        }
+        } label: { Text(Constants.Titles.Buttons.next) }
     }
     
     // MARK: Private
