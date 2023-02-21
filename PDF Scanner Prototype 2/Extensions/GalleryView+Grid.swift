@@ -26,7 +26,7 @@ extension GalleryView {
     internal var addDocumentLinkView: some View {
         VStack {
             Spacer()
-
+            
             let scanView = ScanView(filesService: filesService, scannerModel: scannerModel, files: $files)
             NavigationLink(destination: scanView) {
                 VStack{
@@ -34,7 +34,7 @@ extension GalleryView {
                     Text(Constants.Titles.Gallery.Cell.newDocument).font(.caption)
                 }
             }
-
+            
             Spacer()
         }
     }
@@ -48,7 +48,7 @@ extension GalleryView {
             VStack {
                 Image(Constants.Images.Icons.doc).resizable().aspectRatio(contentMode: .fit)
                 Spacer()
-
+                
                 Text("\(files[file])").font(.caption).onTapGesture {
                     withAnimation{
                         prepareAndOpenFilePreview(of: files[file])
@@ -59,18 +59,25 @@ extension GalleryView {
             .background(Color(.secondarySystemBackground))
             .frame(width: UIScreen.main.bounds.width / 4,
                    height: UIScreen.main.bounds.width / 3)
-
+            
             .overlay(
                 VStack {
                     HStack {
                         Spacer()
-
+                        
                         Button {
-                            filesService.deleteFileWith(fileName: files[file])
-                            files.remove(at: file)
+                            isDeleteFileAlertPresent.toggle()
                         } label: { Text(Constants.Titles.Buttons.delete) }
+                        
+                            .alert(isPresented: $isDeleteFileAlertPresent) {
+                                Alert(title: Text(Constants.Titles.Alert.DeleteDocument.title + "\(files[file])?"),
+                                      primaryButton: .destructive(Text(Constants.Titles.Buttons.delete)) {
+                                    filesService.deleteFileWith(fileName: files[file])
+                                    files.remove(at: file)
+                                }, secondaryButton: .cancel())
+                            }
                     }
-
+                    
                     Spacer()
                 }
             )
@@ -84,7 +91,7 @@ extension GalleryView {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = paths[0].appendingPathComponent(file)
         let filePath = documentDirectory
-
+        
         url = filePath
         fileName = file
         isPDFPreviewPresent = true

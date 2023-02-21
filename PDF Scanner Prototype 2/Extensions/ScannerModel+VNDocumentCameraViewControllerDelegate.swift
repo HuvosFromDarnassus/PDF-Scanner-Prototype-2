@@ -9,7 +9,7 @@ import Foundation
 import VisionKit
 
 extension ScannerModel: VNDocumentCameraViewControllerDelegate {
-
+    
     func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
         controller.dismiss(animated: true)
     }
@@ -24,8 +24,8 @@ extension ScannerModel: VNDocumentCameraViewControllerDelegate {
         for index in 0..<scannedPagesCount {
             self.imageArray.append(scan.imageOfPage(at:index))
         }
-
+        
         controller.dismiss(animated: true)
     }
-
+    
 }

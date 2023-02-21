@@ -24,6 +24,7 @@ struct GalleryView: View {
     @State internal var url = URL(string: "")
     
     @State internal var isPDFPreviewPresent = false
+    @State internal var isDeleteFileAlertPresent = false
     
     // MARK: Layout
     

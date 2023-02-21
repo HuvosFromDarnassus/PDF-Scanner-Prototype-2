@@ -20,12 +20,12 @@ final class ScannerModel: NSObject, ObservableObject {
     func getDocumentCameraViewController() -> VNDocumentCameraViewController {
         let viewController = VNDocumentCameraViewController()
         viewController.delegate = self
-
+        
         return viewController
     }
     
     func removeImage(image: UIImage) {
         imageArray.removeAll { $0 == image }
     }
-
+    
 }

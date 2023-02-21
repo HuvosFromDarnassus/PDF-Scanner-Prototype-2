@@ -15,7 +15,7 @@ struct PDF_Scanner_Prototype_2App: App {
     private let filesService: FileService = FileServiceImplementation()
     private let convertService: ConvertService = ConvertServiceImplementation()
     private let extractService: ExtractService = ExtractServiceImplemenation()
-
+    
     // MARK: Layout
     
     var body: some Scene {
@@ -26,5 +26,5 @@ struct PDF_Scanner_Prototype_2App: App {
                         scannerModel: ScannerModel())
         }
     }
-
+    
 }

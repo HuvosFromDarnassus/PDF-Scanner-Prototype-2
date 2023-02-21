@@ -18,7 +18,7 @@ struct PDFPreviewNavigationBar: View {
     @Binding var isPreviewOpen: Bool
     @Binding var isEditorPresent: Bool
     @Binding var isExportPresent: Bool
-
+    
     @State var fileToShare = [Any]()
     @State var pdfView = PDFView()
     @State var isPreviewSharePresent = false
@@ -79,5 +79,5 @@ struct PDFPreviewNavigationBar: View {
             isPreviewOpen = false
         }
     }
-
+    
 }

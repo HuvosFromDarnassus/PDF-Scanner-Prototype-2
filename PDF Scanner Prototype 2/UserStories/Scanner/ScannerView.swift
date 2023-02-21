@@ -107,7 +107,7 @@ struct ScanView: View {
                     .font(.title2)
                 TextField(Constants.Titles.Scanner.AddDocument.TextField.placeHolder, text: $pdfName)
                     .multilineTextAlignment(.center)
-
+                
                 addDocumentNextButtonView
             }
             
@@ -136,7 +136,7 @@ struct ScanView: View {
     
     private func saveScannedDocuments() {
         guard !pdfName.isEmpty else { return }
-
+        
         self.mode.wrappedValue.dismiss()
         filesService.saveDocumentWith(images: scannerModel.imageArray, pdfName: pdfName)
         scannerModel.imageArray.removeAll()

@@ -6,9 +6,9 @@
 //
 
 enum Constants {
-
+    
     enum Titles {
-
+        
         enum Buttons {
             static let delete: String = "Delete"
             static let back: String = "Back"
@@ -21,6 +21,7 @@ enum Constants {
             static let extractText: String = "Extact text"
             static let ok: String = "OK"
             static let export: String = "Export"
+            static let submit: String = "Submit"
         }
         
         enum Alert {
@@ -34,6 +35,10 @@ enum Constants {
                     static let textExtract: String = "📃 Text successfully extracted from "
                 }
                 
+            }
+            
+            enum DeleteDocument {
+                static let title: String = "❌ Delete "
             }
             
         }
@@ -58,14 +63,16 @@ enum Constants {
         }
         
         enum Export {
+            static let title: String = "✏️ Edit text"
             
             enum Destination {
                 static let word: String = "To word"
+                static let txt: String = "To TXT"
                 static let pasteboard: String = "To pasteboard"
             }
             
         }
-
+        
     }
     
     enum Images {

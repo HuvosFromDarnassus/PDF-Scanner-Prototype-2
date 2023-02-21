@@ -17,15 +17,15 @@ struct PDFPreviewView: View {
     internal let convertService: ConvertService
     internal let extractService: ExtractService
     
-    var url: URL
-    var fileName: String
+    internal var url: URL
+    internal var fileName: String
     
     @Binding var isPreviewOpen: Bool
     
     @State private var isEditorSharePresent: Bool = false
     @State private var isEditorPresent: Bool = false
     @State private var isExportViewPresent: Bool = false
-
+    
     @State private var pdfView = PDFView()
     
     @State private var extractedText: String = ""
@@ -51,20 +51,22 @@ struct PDFPreviewView: View {
                 }
                 Spacer()
                 
-                .sheet(isPresented: $isEditorSharePresent) {
-                    let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
-                    ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
-                }
+                    .sheet(isPresented: $isEditorSharePresent) {
+                        let activityItems = [NSURL(fileURLWithPath: url.relativePath)]
+                        ShareActivityViewController(activityItems: activityItems).edgesIgnoringSafeArea(.all)
+                    }
             }
             else if isExportViewPresent {
-                ExportView(filesService: filesService, fileName: fileName, text: extractedText)
+                ExportView(filesService: filesService,
+                           fileName: fileName,
+                           text: extractedText,
+                           exportingFileURL: url)
                 Spacer()
             }
             else {
                 PDFWrapperView(url)
                 Spacer()
                 bottomButtonsView
-                    .padding()
             }
         }
     }
@@ -72,11 +74,11 @@ struct PDFPreviewView: View {
     // MARK: Views
     
     private var bottomButtonsView: some View {
-        HStack(spacing: 30) {
+        HStack(spacing: 40) {
             Button {
                 extractTextFromDocument()
             } label: { Text(Constants.Titles.Buttons.extractText) }
-
+            
             Button {
                 withAnimation {
                     isEditorPresent.toggle()
@@ -90,12 +92,12 @@ struct PDFPreviewView: View {
     private func extractTextFromDocument() {
         let convertedImageFromPDF = convertService.convertPDFToImage(with: url)
         let extractedText = extractService.extractText(from: convertedImageFromPDF)
-
+        
         self.extractedText = extractedText
-
+        
         withAnimation {
             isExportViewPresent.toggle()
         }
     }
-
+    
 }
